@@ -96,7 +96,7 @@ body{
     display:none;
     width:100%;
     max-width:420px;
-    margin:20px auto 100px;
+    margin:20px auto 40px;
     padding:0 15px;
 }
 
@@ -159,36 +159,6 @@ video{
     line-height:1.5;
 }
 
-/* TELEGRAM BAR */
-
-.telegram-bar{
-    position:fixed;
-    bottom:0;
-    left:0;
-    width:100%;
-    background:#fff;
-    border-top:1px solid #eee;
-    padding:12px;
-    text-align:center;
-    display:none;
-    z-index:999;
-}
-
-.telegram-btn{
-    display:inline-block;
-    background:#0088cc;
-    color:white;
-    text-decoration:none;
-    padding:12px 24px;
-    border-radius:30px;
-    font-weight:bold;
-    transition:0.3s;
-}
-
-.telegram-btn:hover{
-    opacity:0.9;
-}
-
 </style>
 </head>
 
@@ -228,35 +198,30 @@ video{
 
         <div class="fake-time">12:47</div>
 
-        <video id="mainVideo" playsinline preload="metadata">
+        <video
+        id="mainVideo"
+        playsinline
+        preload="metadata"
+        controlsList="nodownload"
+        disablePictureInPicture>
             <source src="A.mp4" type="video/mp4">
         </video>
 
         <button class="play-btn" onclick="playVideo()">
-            ▶ Play Video
+            
         </button>
 
         <div class="video-info">
             <div class="video-title">
-                Premium Vertical Video
+               
             </div>
 
             <div class="video-desc">
-                Smooth clean player with elegant white minimalist design.
+                
             </div>
         </div>
 
     </div>
-
-</div>
-
-<!-- TELEGRAM -->
-
-<div class="telegram-bar" id="telegramBar">
-
-    <a href="https://t.me/yourchannel" class="telegram-btn">
-        Join Telegram Channel
-    </a>
 
 </div>
 
@@ -275,8 +240,6 @@ function startVideo(){
         document.getElementById("startScreen").style.display = "none";
 
         document.getElementById("videoContainer").style.display = "block";
-
-        document.getElementById("telegramBar").style.display = "block";
 
     }, 1800);
 
