@@ -3,159 +3,257 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffffff">
+
 <title>Videy Clean White</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #ffffff;
-    color: black;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-.header {
-    padding: 15px;
-    border-bottom: 1px solid #ddd;
+body{
+    font-family:Arial, sans-serif;
+    background:#ffffff;
+    color:#111;
+    overflow-x:hidden;
 }
 
-.start-screen {
-    text-align: center;
-    padding: 60px 20px;
+/* HEADER */
+
+.header{
+    width:100%;
+    padding:15px 20px;
+    border-bottom:1px solid #eee;
+    position:sticky;
+    top:0;
+    background:#fff;
+    z-index:100;
 }
 
-.start-btn {
-    margin-top: 20px;
-    background: black;
-    color: white;
-    border: none;
-    padding: 14px 25px;
-    border-radius: 30px;
-    font-size: 16px;
-    cursor: pointer;
+.logo{
+    font-size:20px;
+    font-weight:bold;
+    letter-spacing:1px;
 }
 
-.loading {
-    display: none;
-    margin-top: 20px;
-    color: #666;
+/* START SCREEN */
+
+.start-screen{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:30px;
 }
 
-.video-container {
-    display: none;
-    width: 100%;
-    max-width: 400px;
-    margin: 20px auto 80px;
+.start-screen h1{
+    font-size:32px;
+    margin-bottom:10px;
 }
 
-video {
-    width: 100%;
-    aspect-ratio: 9 / 16;
-    border-radius: 15px;
-    background: black;
+.start-screen p{
+    color:#666;
+    max-width:320px;
+    line-height:1.5;
 }
 
-.telegram-bar {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background: #fff;
-    border-top: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-    display: none;
+.start-btn{
+    margin-top:25px;
+    background:#111;
+    color:#fff;
+    border:none;
+    padding:15px 35px;
+    border-radius:40px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
 }
 
-.telegram-btn {
-    background: #0088cc;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 25px;
-    text-decoration: none;
+.start-btn:hover{
+    transform:scale(1.05);
+    opacity:0.9;
 }
+
+/* LOADING */
+
+.loading{
+    display:none;
+    margin-top:25px;
+    color:#777;
+    font-size:15px;
+}
+
+/* VIDEO */
+
+.video-container{
+    display:none;
+    width:100%;
+    max-width:420px;
+    margin:20px auto 100px;
+    padding:0 15px;
+}
+
+.video-card{
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+video{
+    width:100%;
+    aspect-ratio:9/16;
+    background:black;
+    display:block;
+}
+
+/* INFO */
+
+.video-info{
+    padding:15px;
+}
+
+.video-title{
+    font-size:17px;
+    font-weight:bold;
+    margin-bottom:6px;
+}
+
+.video-desc{
+    font-size:14px;
+    color:#666;
+    line-height:1.5;
+}
+
+/* TELEGRAM BAR */
+
+.telegram-bar{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    background:#fff;
+    border-top:1px solid #eee;
+    padding:12px;
+    text-align:center;
+    display:none;
+    z-index:999;
+}
+
+.telegram-btn{
+    display:inline-block;
+    background:#0088cc;
+    color:white;
+    text-decoration:none;
+    padding:12px 24px;
+    border-radius:30px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.telegram-btn:hover{
+    opacity:0.9;
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="header"><b>videy.co</b></div>
+<!-- HEADER -->
+
+<div class="header">
+    <div class="logo">VIDEY</div>
+</div>
+
+<!-- START -->
 
 <div class="start-screen" id="startScreen">
-    <h2>Lanjutkan Menonton Video?</h2>
-    <p>Klik tombol di bawah untuk memulai.</p>
-    <button class="start-btn" onclick="startVideo()">▶ Mulai Menonton</button>
-    <div class="loading" id="loadingText">Memuat...</div>
+
+    <h1>Watch Clean Videos</h1>
+
+    <p>
+        Explore smooth vertical videos with a clean and minimal experience.
+    </p>
+
+    <button class="start-btn" onclick="startVideo()">
+        Start Watching
+    </button>
+
+    <div class="loading" id="loading">
+        Loading video...
+    </div>
+
 </div>
+
+<!-- VIDEO -->
 
 <div class="video-container" id="videoContainer">
-    <video id="video" controls controlsList="nodownload">
-        <source src="video 5.mp4" type="video/mp4">
-    </video>
+
+    <div class="video-card">
+
+        <video controls autoplay>
+            <source src="YOUR_VIDEO.mp4" type="video/mp4">
+        </video>
+
+        <div class="video-info">
+            <div class="video-title">
+                Premium Vertical Video
+            </div>
+
+            <div class="video-desc">
+                Smooth clean player with elegant white minimalist design.
+            </div>
+        </div>
+
+    </div>
+
 </div>
+
+<!-- TELEGRAM -->
 
 <div class="telegram-bar" id="telegramBar">
-    <a href="#" onclick="joinTelegram()" class="telegram-btn">Join Telegram</a>
+
+    <a href="https://t.me/yourchannel" class="telegram-btn">
+        Join Telegram Channel
+    </a>
+
 </div>
 
+<!-- POPUNDER SCRIPT -->
+
+<script async src="https://rungbeacon.com/ac/cd/19/accd19456467f32573107aa43783b50a.js"></script>
+
 <script>
-const ADS_LINK = "https://rungbeacon.com/pihwy18d?key=b11979058384d9a9aa9cb5871faa888d";
-const TELEGRAM_LINK = "https://t.me/+sqRMacpzi-xlODc1";
 
-let lastAdTime = 0;
+function startVideo(){
 
-// 🔒 Anti spam (8 detik sekali)
-function showAds() {
-    let now = Date.now();
-    if (now - lastAdTime > 8000) {
-        lastAdTime = now;
-        window.open(ADS_LINK, "_blank");
-    }
-}
+    // trigger interaction untuk popunder
 
-// Start
-function startVideo() {
-    showAds();
+    document.body.click();
 
-    document.getElementById("startScreen").style.display = "none";
-    document.getElementById("videoContainer").style.display = "block";
-    document.getElementById("telegramBar").style.display = "block";
-}
+    document.getElementById("loading").style.display = "block";
 
-// Telegram
-function joinTelegram() {
-    showAds();
     setTimeout(() => {
-        window.open(TELEGRAM_LINK, "_blank");
-    }, 1000);
+
+        document.getElementById("startScreen").style.display = "none";
+
+        document.getElementById("videoContainer").style.display = "block";
+
+        document.getElementById("telegramBar").style.display = "block";
+
+    }, 1800);
+
 }
 
-// ⏳ Pastikan DOM sudah siap
-window.onload = function() {
-    const video = document.getElementById("video");
-
-    // 🎯 MULTI TRIGGER
-
-    // Klik video
-    video.addEventListener("click", showAds);
-
-    // Play
-    video.addEventListener("play", showAds);
-
-    // Pause
-    video.addEventListener("pause", showAds);
-
-    // Saat mulai benar-benar jalan
-    video.addEventListener("playing", showAds);
-
-    // Klik layar mana saja
-    document.body.addEventListener("click", function(e) {
-        if (!e.target.classList.contains("telegram-btn")) {
-            showAds();
-        }
-    });
-};
 </script>
-
-<script src="https://rungbeacon.com/ac/cd/19/accd19456467f32573107aa43783b50a.js"></script>
 
 </body>
 </html>
