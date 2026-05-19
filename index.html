@@ -105,6 +105,7 @@ body{
     border-radius:20px;
     overflow:hidden;
     box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    position:relative;
 }
 
 video{
@@ -112,6 +113,32 @@ video{
     aspect-ratio:9/16;
     background:black;
     display:block;
+}
+
+/* FAKE TIME */
+
+.fake-time{
+    position:absolute;
+    top:12px;
+    right:12px;
+    background:rgba(0,0,0,0.75);
+    color:white;
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:13px;
+    z-index:5;
+}
+
+/* PLAY BUTTON */
+
+.play-btn{
+    width:100%;
+    border:none;
+    padding:14px;
+    background:#111;
+    color:white;
+    font-size:15px;
+    cursor:pointer;
 }
 
 /* INFO */
@@ -199,9 +226,15 @@ video{
 
     <div class="video-card">
 
-        <video controls autoplay>
+        <div class="fake-time">12:47</div>
+
+        <video id="mainVideo" playsinline preload="metadata">
             <source src="A.mp4" type="video/mp4">
         </video>
+
+        <button class="play-btn" onclick="playVideo()">
+            ▶ Play Video
+        </button>
 
         <div class="video-info">
             <div class="video-title">
@@ -235,10 +268,6 @@ video{
 
 function startVideo(){
 
-    // trigger interaction untuk popunder
-
-    document.body.click();
-
     document.getElementById("loading").style.display = "block";
 
     setTimeout(() => {
@@ -250,6 +279,16 @@ function startVideo(){
         document.getElementById("telegramBar").style.display = "block";
 
     }, 1800);
+
+}
+
+function playVideo(){
+
+    const video = document.getElementById("mainVideo");
+
+    video.play();
+
+    document.querySelector(".play-btn").style.display = "none";
 
 }
 
